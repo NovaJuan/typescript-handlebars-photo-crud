@@ -1,0 +1,47 @@
+<h1 class="text-center mb-4">{{{user}}}'s Posts</h1>
+<div class="row d-flex justify-content-center">
+  {{#if posts}}
+    {{#each posts}}
+      {{#if image.filename}}
+        <div class="col-md-3 mb-5">
+          <div class="card image rounded-0">
+            <img class="card-img rounded-0" src="/uploads/{{{image.filename}}}" alt="">
+            <div class="image-content">
+              <div class="image-content-text">
+                <h5>{{{title}}}</h5>
+                {{#if description}}
+                  <p><a href="/user/{{{user}}}"><strong>@{{{user}}}</strong></a> | {{{description}}}</p>
+                {{else}}
+                  <p><a href="/user/{{{user}}}"><strong>@{{{user}}}</strong></a></p>
+                {{/if}}
+              </div>
+              <div class="btn-group">
+                <a href="/delete/{{{_id}}}" class="btn btn-danger rounded-0"><i class="far fa-trash-alt"></i></a>
+                <a href="/edit/{{{_id}}}" class="btn btn-primary rounded-0"><i class="far fa-edit"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{else}}
+        <div class="col-md-3 mb-5">
+          <div class="card post rounded-0">
+            <div class="card-body">
+              <h5>{{{title}}}</h5>
+              {{#if description}}
+                <p><a href="/user/{{{user}}}"><strong>@{{{user}}}</strong></a> | {{{description}}}</p>
+              {{else}}
+                <p><a href="/user/{{{user}}}"><strong>@{{{user}}}</strong></a></p>
+              {{/if}}
+              <div class="btn-group">
+                <a href="/delete/{{{_id}}}" class="btn btn-danger rounded-0"><i class="far fa-trash-alt"></i></a>
+                <a href="/edit/{{{_id}}}" class="btn btn-primary rounded-0"><i class="far fa-edit"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    {{/each}}
+  {{else}}
+    <p class="text-center">No posts from {{{user}}} yet!</p>
+  {{/if}}
+</div>
